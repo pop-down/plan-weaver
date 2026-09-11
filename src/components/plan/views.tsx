@@ -299,9 +299,10 @@ function PlanDetail({ plan, onClose }: { plan: Plan; onClose?: () => void }) {
 }
 
 export function WorkspaceView() {
-  const [selectedId, setSelectedId] = useState<string | null>(plans[0].id);
+  const first = plans[0] as Plan;
+  const [selectedId, setSelectedId] = useState<string>(first.id);
   const [sheetOpen, setSheetOpen] = useState(false);
-  const selected = plans.find((p) => p.id === selectedId) ?? plans[0];
+  const selected: Plan = plans.find((p) => p.id === selectedId) ?? first;
 
   return (
     <div className="flex h-full min-h-0">
